@@ -43,7 +43,7 @@ Usually, parsers are _generated_.  MARPA is one such parser generator - it gener
 
 Parsing in basic terms is constituted of the following steps:
 
-- Take the input stream and **tokenize** it.  Tokenization is often called **lexical analysis** and is sometimes the responsibility of a wholly different program, called a **lexer**, rather than being part of the parser itself.
+- Take the input stream and **tokenize** it.  Tokenization is often called **lexical analysis** and is sometimes the responsibility of a wholly different program, called a **lexer** (or scanner, as noted above), rather than being part of the parser itself.
   - This breaks up the input stream into allowable _tokens_.  For instance, the expression `x = a + b + (c*d)` could be split into the tokens `x`, `=`, `a`, `+`, `b`, `+`, `(`, `c`, `*`, `d`, and `)`.  Evidently, a good parser must not care about the number of whitespaces in such a context (though it well could, or should, in other contexts).  That is, `x  = a+b+ (c * d)` must produce the same tokens.
   - How is it decided that this is how tokenization should work?  For instance, why couldn't the list of output tokens include something like `(c` or `*d`?  Well, that depends on the **rules of tokenization** defined by the lexical grammar.  
-  
+- Next, determine if the tokens are in the right order and form a syntactically correct expression, as determined by the **rules of parsing**.  
