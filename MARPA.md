@@ -10,11 +10,13 @@ If the input stream "matches" or "conforms to" the grammar, then we can say that
 
 ## Parsing in simple terms
 
-**Parsing** in computer science is the process of taking text in some language, specified as a _grammar_ as input, and making sense out of it.
+**Parsing** in computer science is the process of taking text in some language, specified in the form of a _grammar_, as input, and making sense out of it.
 
 As with many things in the world of CS, "making sense" means the input text is converted into a data structure - specifically, a **tree**, because it is hierarchical and expresses relationships well - and usually, an _**abstract syntax tree (AST)**_.  
 
 The process of generating this tree checks the syntax of the input; i.e., a valid AST is generated if the input is valid.  Validity here means it conforms to the _rules_of the grammar it is based on.
+
+A grammar is thus a set of rules.  It could define the set of _tokens_ that are acceptable and the _order_ in which they must appear.
 
 A parser could well be hand-written.  Quite obviously, this approach will present difficulties if the language it is written for is of any measure of complexity.
 
