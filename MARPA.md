@@ -18,6 +18,23 @@ The process of generating this tree checks the syntax of the input; i.e., a vali
 
 A grammar is thus a set of rules.  It could define the set of _tokens_ that are acceptable and the _order_ in which they must appear.
 
+Let's take the example of a simple calculator (not a scientific one).
+
+The grammar for this application will have to define:
+
+- The set of allowable tokens 
+  - This would be the digits `0-9`, and the characters `+`, `-`, `*`, `/`.
+- The order in which they are allowed to occur
+  - For instance, `+` and `-` are legal at the start of a string.  `*` and `/` are not.
+  - None of `+`, `-`, `*`, `/` are allowed at the end of a string.
+  - ...
+  
+Such a grammar is usually expressed in a format called [Backus-Naur Form]https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form.
+
+The grammar understood by Marpa is written in a format of BNF called _extended_ BNF (EBNF), named SLIF-DSL.  That scary acronym is actually two acronyms, standing for "Scanless Interface - Domain Specific Language".
+In English, the former just means that there is no explicit "scanner" (commonly called "lexer") required to split the input up into tokens - the parsing algorithm takes care of that.  See the next section for more details.
+The latter is pretty self-explanatory - it means that the Marpa grammar can contain tokens which are highly specific to its own domain, and may not be sensible or applicable in other domains (this is in contrast to a "general purpose" language).
+
 A parser could well be hand-written.  Quite obviously, this approach will present difficulties if the language it is written for is of any measure of complexity.
 
 Usually, parsers are _generated_.  MARPA is one such parser generator - it generates the parser for you based on the grammar defined.
