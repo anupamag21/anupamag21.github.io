@@ -47,4 +47,6 @@ Parsing in basic terms is constituted of the following steps:
   - This breaks up the input stream into allowable _tokens_.  For instance, the expression `x = a + b + (c*d)` could be split into the tokens `x`, `=`, `a`, `+`, `b`, `+`, `(`, `c`, `*`, `d`, and `)`.  Evidently, a good parser must not care about the number of whitespaces in such a context (though it well could, or should, in other contexts).  That is, `x  = a+b+ (c * d)` must produce the same tokens.
   - How is it decided that this is how tokenization should work?  For instance, why couldn't the list of output tokens include something like `(c` or `*d`?  Well, that depends on the **rules of tokenization** defined by the lexical grammar.  
 - Next, determine if the tokens form a syntactically correct expression and are in the right order, as determined by the **rules of parsing**.  
-  - The parser must ultimately generate a derivation of the input from the grammar.
+  - The parser must ultimately generate a derivation of the input from the grammar.  It does so by generating, or attempting to generate, a tree (such as an AST) from the input.
+  - The rules to generate this tree depends on the grammar.  For instance, for the calculator application, I might build stacks for expressions and operators; and generate a tree from the stacks.  The code for the AST could be produced by a traversal of the tree.  See this[https://softwareengineering.stackexchange.com/a/254075] for an excellent example of AST construction.
+  
