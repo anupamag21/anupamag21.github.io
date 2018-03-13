@@ -29,7 +29,7 @@ The grammar for this application will have to define:
   - None of `+`, `-`, `*`, `/` are allowed at the end of a string.
   - ...
   
-Such a grammar is usually expressed in a format called [Backus-Naur Form]https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form.
+Such a grammar is usually expressed in a format called [Backus-Naur Form](https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form).
 
 The grammar understood by Marpa is written in a format of BNF called _extended_ BNF (EBNF), named SLIF-DSL.  That scary acronym is actually two acronyms, standing for "Scanless Interface - Domain Specific Language".
 In English, the former just means that there is no explicit "scanner" (commonly called "lexer") required to split the input up into tokens - the parsing algorithm takes care of that.  See the next section for more details.
@@ -48,6 +48,6 @@ Parsing in basic terms is constituted of the following steps:
   - How is it decided that this is how tokenization should work?  For instance, why couldn't the list of output tokens include something like `(c` or `*d`?  Well, that depends on the **rules of tokenization** defined by the lexical grammar.  
 - Next, determine if the tokens form a syntactically correct expression and are in the right order, as determined by the **rules of parsing**.  
   - The parser must ultimately generate a derivation of the input from the grammar.  It does so by generating, or attempting to generate, a tree (such as an AST) from the input.
-  - The rules to generate this tree depends on the grammar.  For instance, for the calculator application, I might build stacks for expressions and operators; and generate a tree from the stacks.  The code for the AST could be produced by a traversal of the tree.  See this[https://softwareengineering.stackexchange.com/a/254075] for an excellent example of AST construction.
+  - The rules to generate this tree depends on the grammar.  For instance, for the calculator application, I might build stacks for expressions and operators; and generate a tree from the stacks.  The code for the AST could be produced by a traversal of the tree.  See [this](https://softwareengineering.stackexchange.com/a/254075) for an excellent example of AST construction.
   - A parser may adopt a "top-down" approach, where it starts constructing the tree from the input stream starting at the "top" - i.e., the root of the tree - and gradually makes its way "down" - i.e., towards the leaf nodes.  "Recursive descent parsing" is a commonly adopted technique, where the parsing algorithm starts at the left side of an input stream and works its way to the right.  It is "recursive" because it recursively calls procedures to parse the input.
   - Else, a parser might adopt a "bottom-up" approach, where it starts with a sentence entire and applies the rules in "reverse", such that the start symbol is reached.  Thus, it starts from the leaf nodes ("bottom") of the tree and moves towards the root ('top").
